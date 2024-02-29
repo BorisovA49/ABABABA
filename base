@@ -1,0 +1,110 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Хост: 127.0.0.1:3306
+-- Время создания: Фев 29 2024 г., 22:58
+-- Версия сервера: 8.0.30
+-- Версия PHP: 7.3.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- База данных: `Ozon`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `cookie`
+--
+
+CREATE TABLE `cookie` (
+  `id` int NOT NULL,
+  `name` varchar(31) NOT NULL,
+  `parent` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `cookie`
+--
+
+INSERT INTO `cookie` (`id`, `name`, `parent`) VALUES
+(1, 'Электроника', NULL),
+(2, 'Одежда', NULL),
+(3, 'Обувь', NULL),
+(4, 'Телефоны и смарт-часы', 1),
+(5, 'Компьютеры', 1),
+(6, 'Умный дом', 1),
+(7, 'Телевизоры и видеотехника', 1),
+(8, 'Женщинам', 2),
+(9, 'Мужчинам', 2),
+(10, 'Детям', 2),
+(11, 'Униформа и рабочая одежда', 2),
+(12, 'Женщинам', 3),
+(13, 'Мужчинам', 3),
+(14, 'Детям', 3),
+(15, 'Уход и аксессуары', 3),
+(16, 'Смартфоны', 4),
+(17, 'Фитнес-браслеты', 4),
+(18, 'Мониторы', 5),
+(19, 'Системные блоки', 5),
+(20, 'Умная разетка', 6),
+(21, 'Телефизоры', 7),
+(22, 'Тв - приставка', 7),
+(23, 'Юбка', 8),
+(24, 'Брюки', 9),
+(25, 'Футболки', 10),
+(26, 'Комбенизон', 11),
+(27, 'Туфли женские', 12),
+(28, 'Туфли мужские', 13),
+(29, 'Кроссовки', 14),
+(30, 'Кроссовки', 12),
+(31, 'Кроссовки', 13),
+(38, 'шлепки', 3),
+(39, 'asd', 11),
+(40, 'мама', 8);
+
+--
+-- Индексы сохранённых таблиц
+--
+
+--
+-- Индексы таблицы `cookie`
+--
+ALTER TABLE `cookie`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent` (`parent`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
+-- AUTO_INCREMENT для таблицы `cookie`
+--
+ALTER TABLE `cookie`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `cookie`
+--
+ALTER TABLE `cookie`
+  ADD CONSTRAINT `cookie_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `cookie` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
